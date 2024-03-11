@@ -25,6 +25,9 @@ class TicTacToe:
                 self.play_at(play_idx)
             except (ValueError, IndexError) as e:
                 print('Invalid input, please input an integer between 0 and 8 at an empty cell.')
+                continue
+
+            self.check_game_state()
 
         if self.winner != 'Draw':
             print(f'Game Over, winner is: {self.winner}')
@@ -40,7 +43,6 @@ class TicTacToe:
             symbol = 'X'
         self.p1_turn = not self.p1_turn
         self.board[idx] = symbol
-        self.check_game_state()
 
     def check_game_state(self):
         b = self.board
@@ -58,5 +60,6 @@ class TicTacToe:
             self.winner = 'Draw'
 
 if __name__ == '__main__':
+    print('-------------\nCell indexes:\n012\n345\n678\n-------------')
     game = TicTacToe()
     game.run()
